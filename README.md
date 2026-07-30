@@ -7,6 +7,9 @@
 ![Flyway](https://img.shields.io/badge/Flyway-10-red?logo=flyway)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker)
 ![JaCoCo](https://img.shields.io/badge/Cobertura-80%25-yellowgreen)
+![Micrometer](https://img.shields.io/badge/Micrometer-1.13-brightgreen)
+![Prometheus](https://img.shields.io/badge/Prometheus-2.53-E6522C)
+![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-1.37-4A154B?logo=opentelemetry)
 
 **Sistema de liquidação financeira** para processamento de pagamentos com arquitetura orientada a eventos. Construído com Clean Architecture, Kafka para fluxo de eventos e PostgreSQL para persistência transacional.
 
@@ -104,6 +107,10 @@ O Financial Settlement System processa pagamentos de forma assíncrona e resilie
 | Testcontainers | 1.19.8 | Testes de integração |
 | JaCoCo | 0.8.11 | Cobertura de código |
 | Docker | Compose V2 | Infraestrutura local |
+| Prometheus | 2.53 | Métricas e monitoramento |
+| OpenTelemetry | 1.37 | Distributed tracing |
+| Zipkin | 3.4 | Trace visualization |
+| Jaeger | 1.60 | Trace visualization (OTLP) |
 
 ---
 
@@ -251,7 +258,12 @@ open target/site/jacoco/index.html
 |----------|-----------|
 | `GET /actuator/health` | Health check (PostgreSQL, Kafka) |
 | `GET /actuator/info` | Informações da aplicação |
-| `GET /actuator/metrics` | Métricas de performance |
+| `GET /actuator/metrics` | Métricas Micrometer |
+| `GET /actuator/prometheus` | Métricas no formato Prometheus |
+
+### Tracing Distribuído
+
+Tracing via OpenTelemetry com exportação para Zipkin e Jaeger.
 
 ---
 

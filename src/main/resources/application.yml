@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: financial-settlement-system
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/financial_settlement}
     username: ${SPRING_DATASOURCE_USERNAME:settlement}
@@ -70,3 +72,19 @@ logging:
     com.financialsettlement: DEBUG
     org.springframework.kafka: INFO
     org.hibernate.SQL: WARN
+    io.micrometer: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  tracing:
+    sampling:
+      probability: 1.0
